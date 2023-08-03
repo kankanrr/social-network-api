@@ -1,7 +1,7 @@
-// DEPS
 const { Schema, model, Types } = require("mongoose");
 const moment = require("moment");
 
+// ReactionsSchema
 const ReactionsSchema = new Schema(
   {
     // Set custom ID
@@ -32,7 +32,7 @@ const ReactionsSchema = new Schema(
   }
 );
 
-// thoughts schema
+// ThoughtsSchema
 const ThoughtsSchema = new Schema(
   {
     thoughtText: {
@@ -52,7 +52,6 @@ const ThoughtsSchema = new Schema(
       type: String,
       required: true,
     },
-    // Use ReactionsSchema to validate data
     reactions: [ReactionsSchema],
   },
   {

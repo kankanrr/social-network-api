@@ -36,7 +36,7 @@ const thoughtsController = {
       });
   },
 
-  // Get thought by ID
+  // Get a certain thought by ID
   getThoughtsById({ params }, res) {
     Thoughts.findOne({ _id: params.id })
       .populate({ path: "reactions", select: "-__v" })
@@ -56,7 +56,7 @@ const thoughtsController = {
       });
   },
 
-  // Update thought by ID
+  // Update a current thought by ID
   updateThoughts({ params, body }, res) {
     Thoughts.findOneAndUpdate({ _id: params.id }, body, {
       new: true,
@@ -76,7 +76,7 @@ const thoughtsController = {
       .catch((err) => res.json(err));
   },
 
-  // Delete thought by ID
+  // Delete a current thought by ID
   deleteThoughts({ params }, res) {
     Thoughts.findOneAndDelete({ _id: params.id })
       .then((dbThoughtsData) => {
@@ -91,7 +91,7 @@ const thoughtsController = {
       .catch((err) => res.status(400).json(err));
   },
 
-  // Add Reaction
+  // Add a new Reaction
   addReaction({ params, body }, res) {
     Thoughts.findOneAndUpdate(
       { _id: params.thoughtId },
@@ -112,7 +112,7 @@ const thoughtsController = {
       .catch((err) => res.status(400).json(err));
   },
 
-  // Delete by ID
+  // Delete a reaction by ID
   deleteReaction({ params }, res) {
     Thoughts.findOneAndUpdate(
       { _id: params.thoughtId },
